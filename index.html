@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Black Mirror's index of episodes.</title>
+
+  
+  <link rel="icon" href="./favicons/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicons/favicon-48.png" />
+  <link rel="apple-touch-icon" href="./favicons/apple-touch-icon.png" />
+  <link rel="manifest" href="./favicons/site.webmanifest" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="mask-icon" href="./favicons/mask-icon.svg" color="#ffffff" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#0b0b0b;
+      --ink-soft:#5f6368;
+      --line:#e6e6e6;
+      --accent:#ff2bd6;
+      --accent-2:#00e5ff;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      --sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+
+    body{
+      background-image:
+        linear-gradient(var(--line) 1px,transparent 1px),
+        linear-gradient(90deg,var(--line) 1px,transparent 1px);
+      background-size:32px 32px;
+    }
+
+    .wrap{max-width:1200px;margin:0 auto;padding:32px 20px 80px}
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0 28px;
+      border-bottom:1px solid var(--line)
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:var(--mono);
+      font-weight:700;
+      letter-spacing:.12em;
+      font-size:12px;
+      text-transform:uppercase;
+    }
+
+    .brand .tag{color:var(--ink-soft);font-weight:400;letter-spacing:.08em}
+
+    
+    .logo{
+      width:28px;
+      height:28px;
+      border-radius:8px;
+      overflow:hidden;
+      flex:0 0 auto;
+      box-shadow:0 10px 22px rgba(0,0,0,.08);
+      border:1px solid rgba(0,0,0,.06);
+      background:#000;
+    }
+    .logo img{display:block;width:100%;height:100%}
+
+    .hero{padding:56px 0 40px}
+
+    .title{
+      font-size:clamp(34px,6vw,72px);
+      line-height:1;
+      margin:0 0 18px;
+      text-transform:uppercase;
+      letter-spacing:-.02em
+    }
+
+    .subtitle{max-width:70ch;font-size:15px;color:var(--ink-soft)}
+
+    
+    .glitch{position:relative;display:inline-block;text-shadow:0 0 18px rgba(0,0,0,.25)}
+    .glitch::before,
+    .glitch::after{
+      content:attr(data-text);
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      overflow:hidden;
+      pointer-events:none;
+    }
+    .glitch::before{
+      transform:translate(1.5px,0);
+      color:#ff003c;
+      opacity:.75;
+      animation:glitch1 2.4s infinite linear alternate-reverse;
+    }
+    .glitch::after{
+      transform:translate(-1.5px,0);
+      color:#00fff2;
+      opacity:.65;
+      animation:glitch2 3.2s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch1{
+      0%{clip-path:inset(0 0 92% 0)}
+      10%{clip-path:inset(18% 0 70% 0)}
+      20%{clip-path:inset(55% 0 30% 0)}
+      30%{clip-path:inset(78% 0 6% 0)}
+      40%{clip-path:inset(12% 0 76% 0)}
+      50%{clip-path:inset(44% 0 40% 0)}
+      60%{clip-path:inset(70% 0 18% 0)}
+      70%{clip-path:inset(6% 0 86% 0)}
+      80%{clip-path:inset(32% 0 52% 0)}
+      90%{clip-path:inset(84% 0 8% 0)}
+      100%{clip-path:inset(0 0 92% 0)}
+    }
+    @keyframes glitch2{
+      0%{clip-path:inset(82% 0 6% 0)}
+      12%{clip-path:inset(14% 0 78% 0)}
+      24%{clip-path:inset(60% 0 24% 0)}
+      36%{clip-path:inset(28% 0 58% 0)}
+      48%{clip-path:inset(76% 0 10% 0)}
+      60%{clip-path:inset(40% 0 44% 0)}
+      72%{clip-path:inset(8% 0 86% 0)}
+      84%{clip-path:inset(52% 0 34% 0)}
+      100%{clip-path:inset(82% 0 6% 0)}
+    }
+
+    .dock{margin-top:32px}
+    .dock-inner{display:flex;gap:10px;flex-wrap:wrap}
+
+    .dock a{
+      font-family:var(--mono);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--ink);
+      text-decoration:none;
+      transition:background .2s,border-color .2s
+    }
+
+    .dock a:hover{background:#f6f6f6;border-color:var(--ink)}
+
+    section.card{margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+
+    .cardhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+    .cardhead h2{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0}
+
+    .meta{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+
+    .episodes{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:18px;
+      margin-top:28px
+    }
+
+    .ep{
+      padding:18px 16px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      transition:transform .2s ease,box-shadow .2s ease
+    }
+
+    .ep:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.06)}
+    .ep h3{margin:0 0 8px;font-size:15px}
+    .ep p{margin:0;font-size:13px;line-height:1.55;color:var(--ink-soft)}
+
+    footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        
+        <span class="logo" aria-hidden="true">
+          <img src="./favicons/icon-192.png" alt="" width="28" height="28" />
+        </span>
+        <span>BLACK MIRROR</span>
+        <span class="tag">// episode index</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1 class="title glitch" data-text="BLACK MIRROR">BLACK MIRROR</h1>
+      <p class="subtitle">A season‑by‑season index of episodes.</p>
+
+      <nav class="dock" aria-label="Season navigation">
+        <div class="dock-inner">
+          <a href="#s1">S1</a>
+          <a href="#s2">S2</a>
+          <a href="#s3">S3</a>
+          <a href="#s4">S4</a>
+          <a href="#bandersnatch">Bandersnatch</a>
+          <a href="#s5">S5</a>
+          <a href="#s6">S6</a>
+          <a href="#s7">S7</a>
+        </div>
+      </nav>
+    </section>
+
+    <main class="grid" id="content" aria-label="Episode list">
+
+      
+      <section class="card" id="s1" data-season="1">
+        <div class="cardhead">
+          <h2>Season 1</h2>
+          <div class="meta">
+            <span class="badge">Release: December 2011</span>
+            <span class="badge">Channel 4 (later Netflix)</span>
+          </div>
+        </div>
+        <p class="season-notes">Three episodes that defined the show’s cynical, disturbing tone.</p>
+        <div class="episodes">
+          <article class="ep" data-title="The National Anthem" data-keywords="prime minister kidnapping live tv humiliation princess">
+            <h3>The National Anthem</h3>
+            <p>The British Prime Minister must carry out a humiliating act on live television to save a kidnapped princess.</p>
+          </article>
+          <article class="ep" data-title="Fifteen Million Merits" data-keywords="dystopia bikes credits talent show escape">
+            <h3>Fifteen Million Merits</h3>
+            <p>In a dystopian future, people pedal exercise bikes to earn credits—and their only escape is a ruthless talent show.</p>
+          </article>
+          <article class="ep" data-title="The Entire History of You" data-keywords="memory implant replay jealousy infidelity obsession">
+            <h3>The Entire History of You</h3>
+            <p>In a world where an implant records and replays every memory, a man becomes obsessed with the possibility of his wife’s infidelity.</p>
+          </article>
+        </div>
+      </section>
+
+      
+      <section class="card" id="s2" data-season="2">
+        <div class="cardhead">
+          <h2>Season 2</h2>
+          <div class="meta">
+            <span class="badge">Release: February 2013</span>
+            <span class="badge">Special in 2014</span>
+          </div>
+        </div>
+        <p class="season-notes">This season includes one of the series’ most famous specials: <strong>White Christmas</strong>.</p>
+        <div class="episodes">
+          <article class="ep" data-title="Be Right Back" data-keywords="grief ai simulation online activity android husband">
+            <h3>Be Right Back</h3>
+            <p>A grieving woman uses technology that simulates her late husband’s personality from his online activity—eventually buying an android with his likeness.</p>
+          </article>
+          <article class="ep" data-title="White Bear" data-keywords="amnesia hunted filmed phones spectators punishment">
+            <h3>White Bear</h3>
+            <p>A woman wakes with no memory and is hunted by strangers while bystanders film her on their phones without intervening.</p>
+          </article>
+          <article class="ep" data-title="The Waldo Moment" data-keywords="elections politics animated blue bear comedian phenomenon">
+            <h3>The Waldo Moment</h3>
+            <p>A comedian who voices an animated blue bear runs for office as a joke—only to become an uncontrollable political phenomenon.</p>
+          </article>
+          <article class="ep" data-title="White Christmas" data-keywords="special block social digital consciousness cloning interrogation servitude">
+            <h3>White Christmas <span style="color: rgba(235,238,255,.72); font-weight: 600;">— Special</span></h3>
+            <p>Three interconnected stories explore social “blocking” and the cloning of digital consciousness for servitude—or interrogation.</p>
+          </article>
+        </div>
+      </section>
+
+      
+      <section class="card" id="s3" data-season="3">
+        <div class="cardhead">
+          <h2>Season 3</h2>
+          <div class="meta">
+            <span class="badge">Release: October 2016</span>
+            <span class="badge">First Netflix-produced season</span>
+          </div>
+        </div>
+        <p class="season-notes">The first season produced directly by Netflix, with a bigger budget and more varied themes.</p>
+        <div class="episodes">
+          <article class="ep" data-title="Nosedive" data-keywords="ratings social stars apartment status anxiety">
+            <h3>Nosedive</h3>
+            <p>In a society built on social ratings (1–5 stars), a woman desperately tries to raise her score to access a luxury apartment.</p>
+          </article>
+          <article class="ep" data-title="Playtest" data-keywords="augmented reality horror game fears traveler test">
+            <h3>Playtest</h3>
+            <p>A traveler agrees to test a revolutionary AR horror game—one that digs into his deepest fears.</p>
+          </article>
+          <article class="ep" data-title="Shut Up and Dance" data-keywords="blackmail hackers video coerced crime">
+            <h3>Shut Up and Dance</h3>
+            <p>A teenager is blackmailed by hackers holding a compromising video and is forced into a chain of criminal acts.</p>
+          </article>
+          <article class="ep" data-title="San Junipero" data-keywords="1980s simulation afterlife elderly emmy love">
+            <h3>San Junipero</h3>
+            <div class="alt" style="font-size:12px;color:var(--ink-soft);margin:0 0 6px">(Note: Emmy-winning episode)</div>
+            <p>Two women meet in an ’80s seaside town that turns out to be a simulated reality for the elderly—and the dead.</p>
+          </article>
+          <article class="ep" data-title="Men Against Fire" data-keywords="soldiers implants augmented reality monsters parasites truth">
+            <h3>Men Against Fire</h3>
+            <p>Soldiers equipped with augmented-reality implants fight “roaches”—but the technology conceals a horrific truth.</p>
+          </article>
+          <article class="ep" data-title="Hated in the Nation" data-keywords="hashtag hate social media drone bees deaths detective">
+            <h3>Hated in the Nation</h3>
+            <p>A detective investigates mysterious deaths tied to a social-media hate hashtag—and swarms of drone bees.</p>
+          </article>
+        </div>
+      </section>
+
+      
+      <section class="card" id="s4" data-season="4">
+        <div class="cardhead">
+          <h2>Season 4</h2>
+          <div class="meta">
+            <span class="badge">Release: December 2017</span>
+          </div>
+        </div>
+        <div class="episodes">
+          <article class="ep" data-title="USS Callister" data-keywords="digital clones star trek simulation dictator programmer">
+            <h3>USS Callister</h3>
+            <p>A brilliant but frustrated programmer traps digital clones of his coworkers inside a Star Trek–style simulation where he rules as an all-powerful tyrant.</p>
+          </article>
+          <article class="ep" data-title="Arkangel" data-keywords="parental surveillance censorship child development consequences">
+            <h3>Arkangel</h3>
+            <p>A mother installs an invasive surveillance system in her daughter to protect her and censor frightening things—devastating her development.</p>
+          </article>
+          <article class="ep" data-title="Crocodile" data-keywords="memories insurance device witness secret past">
+            <h3>Crocodile</h3>
+            <p>A device that lets others view your memories (used by insurers) corners a woman trying to hide a dark secret from her past.</p>
+          </article>
+          <article class="ep" data-title="Hang the DJ" data-keywords="dating algorithm soulmate 99.8 tinder">
+            <h3>Hang the DJ</h3>
+            <p>An “advanced Tinder” dictates exactly how long couples must stay together—aiming to find a soulmate with 99.8% accuracy.</p>
+          </article>
+          <article class="ep" data-title="Metalhead" data-keywords="post-apocalypse robot dogs chase survival">
+            <h3>Metalhead</h3>
+            <p>A woman tries to survive a post-apocalyptic wasteland while being hunted by relentless robot dogs.</p>
+          </article>
+          <article class="ep" data-title="Black Museum" data-keywords="crime museum desert sadistic stories failed neuro tech">
+            <h3>Black Museum</h3>
+            <p>A young woman visits a desert crime museum whose owner recounts three sadistic stories linked to failed neurological technologies.</p>
+          </article>
+        </div>
+      </section>
+
+      
+      <section class="card" id="bandersnatch" data-season="bandersnatch">
+        <div class="cardhead">
+          <h2>Interactive Film</h2>
+          <div class="meta"><span class="badge">Release: December 2018</span></div>
+        </div>
+        <div class="episodes">
+          <article class="ep" data-title="Black Mirror: Bandersnatch" data-keywords="interactive film choose your own adventure 1980s programmer reality">
+            <h3>Black Mirror: Bandersnatch</h3>
+            <p>An interactive film where the viewer chooses the protagonist’s actions: an ’80s video-game programmer who is losing his grip on reality.</p>
+          </article>
+        </div>
+      </section>
+
+      
+      <section class="card" id="s5" data-season="5">
+        <div class="cardhead">
+          <h2>Season 5</h2>
+          <div class="meta">
+            <span class="badge">Release: June 2019</span>
+            <span class="badge">3 episodes</span>
+          </div>
+        </div>
+        <p class="season-notes">A short season of three episodes with well-known cast members (including Miley Cyrus and Anthony Mackie).</p>
+        <div class="episodes">
+          <article class="ep" data-title="Striking Vipers" data-keywords="vr fighting game relationship friends marriage">
+            <h3>Striking Vipers</h3>
+            <p>Two old friends reconnect through a VR fighting game, where they begin a virtual relationship that destabilizes their real lives.</p>
+          </article>
+          <article class="ep" data-title="Smithereens" data-keywords="rideshare kidnapping social network ceo phone call">
+            <h3>Smithereens</h3>
+            <p>A ride-share driver kidnaps an employee of a social network to force a phone call with the company’s CEO.</p>
+          </article>
+          <article class="ep" data-title="Rachel, Jack and Ashley Too" data-keywords="popstar drugged managers robot doll consciousness fan">
+            <h3>Rachel, Jack and Ashley Too</h3>
+            <p>An unhappy pop star is drugged by her managers while a fan tries to help her—using a robotic doll that contains the singer’s real consciousness.</p>
+          </article>
+        </div>
+      </section>
+
+      
+      <section class="card" id="s6" data-season="6">
+        <div class="cardhead">
+          <h2>Season 6</h2>
+          <div class="meta"><span class="badge">Release: June 2023</span></div>
+        </div>
+        <div class="episodes">
+          <article class="ep" data-title="Joan Is Awful" data-keywords="ai tv show real time adaptation salma hayek privacy">
+            <h3>Joan Is Awful</h3>
+            <p>A woman discovers her everyday life is being adapted in real time into an AI-generated TV series—starring Salma Hayek as “her.”</p>
+          </article>
+          <article class="ep" data-title="Loch Henry" data-keywords="scotland documentary true crime local scandal price">
+            <h3>Loch Henry</h3>
+            <p>A couple filming a nature documentary in Scotland stumbles on a shocking local crime story, turning their project into a hit true-crime film—at a terrible cost.</p>
+          </article>
+          <article class="ep" data-title="Beyond the Sea" data-keywords="1969 alternate astronauts consciousness replicas robot earth families tragedy">
+            <h3>Beyond the Sea</h3>
+            <p>In an alternate 1969, two astronauts can transfer their consciousness into robotic replicas on Earth to be with their families—until a tragedy shatters the balance.</p>
+          </article>
+          <article class="ep" data-title="Mazey Day" data-keywords="paparazzi guilt missing actress horror supernatural">
+            <h3>Mazey Day</h3>
+            <p>A guilt-ridden paparazzo hunts for a missing actress, discovering reality is far more monstrous than she imagined (a supernatural horror turn).</p>
+          </article>
+          <article class="ep" data-title="Demon 79" data-keywords="1979 demon murders nuclear apocalypse red mirror">
+            <h3>Demon 79</h3>
+            <p>Set in 1979, a shy sales clerk is forced by a demon to commit three murders to prevent a nuclear apocalypse (presented as a “Red Mirror” film).</p>
+          </article>
+        </div>
+      </section>
+
+      
+      <section class="card" id="s7" data-season="7">
+        <div class="cardhead">
+          <h2>Season 7</h2>
+          <div class="meta">
+            <span class="badge">Release: April 2025</span>
+            <span class="badge">Includes a direct sequel</span>
+          </div>
+        </div>
+        <div class="episodes">
+          <article class="ep" data-title="Common People" data-keywords="terminal illness subscription life support rivermind costs">
+            <h3>Common People</h3>
+            <p>A happy couple is shaken by a terminal diagnosis; the desperate husband enrolls his wife in “Rivermind,” a costly subscription-based life-support system hiding unsettling human costs.</p>
+          </article>
+          <article class="ep" data-title="Bête Noire" data-keywords="chocolate company executive revenge reality perception rewriting technology">
+            <h3>Bête Noire</h3>
+            <p>A successful executive at a chocolate company watches her perfect life unravel when an old high-school acquaintance returns with tech that can rewrite perceived reality as revenge.</p>
+          </article>
+          <article class="ep" data-title="Hotel Reverie" data-keywords="actress trapped immersive remake romance film script escape">
+            <h3>Hotel Reverie</h3>
+            <p>A famous actress becomes trapped in an ultra-immersive, high-tech remake of an old romantic film, forced to follow the script exactly to have any hope of returning to the real world.</p>
+          </article>
+          <article class="ep" data-title="Plaything" data-keywords="thronglets sentient creatures 1990s game collective consciousness police confession">
+            <h3>Plaything</h3>
+            <p>An elderly man tells police about his dark youthful obsession with the “Thronglets,” sentient digital creatures from a ’90s video game that evolved into a threatening collective consciousness.</p>
+          </article>
+          <article class="ep" data-title="Eulogy" data-keywords="enter photographs physical system grief past consequences">
+            <h3>Eulogy</h3>
+            <p>A lonely man uses an innovative system that lets him physically “enter” old photographs, re-examining a painful period of his past—with unforeseen consequences.</p>
+          </article>
+          <article class="ep" data-title="USS Callister: Into Infinity" data-keywords="sequel cloned crew infinity game digital piracy escape system">
+            <h3>USS Callister: Into Infinity</h3>
+            <p>A direct sequel to Season 4: the cloned USS Callister crew, now free inside the vast “Infinity” game universe, must commit digital piracy to survive—while searching for a way to escape the system for good.</p>
+          </article>
+        </div>
+      </section>
+      <footer>
+    </main>
+  </div>
+</body>
+</html>
